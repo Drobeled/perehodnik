@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drobeled's Переходник</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        body {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Блок с приветствием */
+        .intro {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .blue-text {
+            color: #3498db;
+        }
+
+        .btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: 0.3s;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+        }
+
+        /* Блок с ссылками */
+        .links-section {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.6);
+            position: relative;
+            z-index: 2;
+        }
+
+        .link {
+            display: block;
+            font-size: 18px;
+            margin: 10px 0;
+            color: #3498db;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .link:hover {
+            color: #1f78c1;
+        }
+
+        /* Нижний блок с подписью */
+        .footer {
+            height: 40vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #111;
+            color: gray;
+            font-size: 14px;
+        }
+
+        /* Анимационные блоки */
+        .floating-block {
+            position: absolute;
+            background-color: rgba(52, 152, 219, 0.7);
+            border-radius: 20px;
+            width: 50px;
+            height: 50px;
+            animation: floatAnimation 10s infinite alternate ease-in-out;
+        }
+
+        @keyframes floatAnimation {
+            0% {
+                transform: translateY(0px) translateX(0px);
+            }
+            100% {
+                transform: translateY(100px) translateX(100px);
+            }
+        }
+
+        /* Анимация плавного скролла */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="intro">
+        <h1>Привет! Это переходник <span class="blue-text">Drobeled'а!</span></h1>
+        <button class="btn" onclick="scrollDown()">Еще</button>
+    </div>
+
+    <div class="links-section" id="links-section">
+        <a class="link" href="https://youtube.com/@drobeled" target="_blank">Мой YouTube</a>
+        <a class="link" href="https://www.tiktok.com/@drbld0" target="_blank">Мой TikTok</a>
+        <a class="link" href="https://www.roblox.com/users/2273019292/profile" target="_blank">Мой Roblox</a>
+    </div>
+
+    <div class="footer">
+        Owned by Drobeled, Made with GitHub.
+    </div>
+
+    <script>
+        function scrollDown() {
+            window.scrollTo({
+                top: document.getElementById("links-section").offsetTop,
+                behavior: 'smooth'
+            });
+        }
+
+        function createFloatingBlocks(count) {
+            for (let i = 0; i < count; i++) {
+                let block = document.createElement("div");
+                block.classList.add("floating-block");
+
+                let size = Math.random() * 50 + 30;
+                block.style.width = `${size}px`;
+                block.style.height = `${size}px`;
+                block.style.left = `${Math.random() * window.innerWidth}px`;
+                block.style.top = `${Math.random() * window.innerHeight}px`;
+
+                let duration = Math.random() * 5 + 5;
+                block.style.animationDuration = `${duration}s`;
+
+                document.body.appendChild(block);
+            }
+        }
+
+        createFloatingBlocks(20);
+    </script>
+
+</body>
+</html>
